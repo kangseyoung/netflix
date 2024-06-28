@@ -1,0 +1,42 @@
+#!/bin/bash
+
+read -p " 이름 : " name
+read -p " 국어 : " korean
+read -p " 영어 : " english
+read -p " 수학 : " math
+read -p " 물리 : " physics
+read -p " 스페인어 : " spanish
+
+total=`expr $korean + $english + $math + $physics + $spanish`
+subject=( $korean $english $math $physics $spanish )
+grade=( S A B C F )
+a=()
+
+for subject in ${subject[@]}
+do
+if [ $subject -ge 95 ]
+then
+        a+=(${grade[0]})
+elif [ $subject -ge 90 ]
+then
+        a+=(${grade[1]})
+elif [ $subject -ge 80 ]
+then
+        a+=(${grade[2]})
+elif [ $subject -ge 70 ]
+then
+        a+=(${grade[3]})
+else
+        a+=(${grade[4]})
+fi
+done
+
+        echo " 국어: ${a[0]} 입니다."
+        echo " 영어: ${a[1]} 입니다."
+        echo " 수학: ${a[2]} 입니다."
+        echo " 물리: ${a[3]} 입니다."
+        echo " 스페인어: ${a[4]}입니다."
+
+
+
+        echo "총 점 : $total"
